@@ -24,7 +24,7 @@ Upload the Jupyter notebook for this assignment to your GitHub repository. Make 
 Download the following files to help you get started:
 * [Module 7 Challenge File](Starter_Code/Starter_Files/visual_data_analysis.ipynb)
 
-## Instructions
+# Instructions
 Use the `etf_analyzer.ipynb notebook` to complete your analysis of a fintech ETF that consists of four stocks: GOST, GS, PYPL, and SQ. Each stock has its own table in the `etf.db` database, which the `Starter_Code` folder contains.
 
 Analyze the daily returns of the ETF stocks both individually and as a whole. Then deploy the visualizations to a web application by using the Voilà library.
@@ -39,7 +39,7 @@ The detailed instructions are divided into the following parts:
 
 * Deploy the notebook as a web application
 
-# Analyze a Single Asset in the ETF
+## Analyze a Single Asset in the ETF
 For this part of the assignment, you’ll use SQL queries with Python, Pandas, and hvPlot to analyze the performance of a single asset from the ETF.
 
 Complete the following steps:
@@ -52,7 +52,7 @@ Complete the following steps:
 
 4. Using hvPlot, create an interactive visualization for the PYPL cumulative returns. Reflect the “time” column of the DataFrame on the x-axis. Make sure that you professionally style and format your visualization to enhance its readability.
 
-# Optimize Data Access with Advanced SQL Queries
+## Optimize Data Access with Advanced SQL Queries
 For this part of the assignment, you’ll continue to analyze a single asset (PYPL) from the ETF. You’ll use advanced SQL queries to optimize the efficiency of accessing data from the database.
 
 Complete the following steps:
@@ -77,7 +77,7 @@ Complete the following steps:
 
     * Using the SQL statement, read the data from the database into a Pandas DataFrame, and then review the resulting DataFrame.
 
-# Analyze the ETF Portfolio
+## Analyze the ETF Portfolio
 For this part of the assignment, you’ll build the entire ETF portfolio and then evaluate its performance. To do so, you’ll build the ETF portfolio by using SQL joins to combine all the data for each asset.
 
 Complete the following steps:
@@ -98,7 +98,7 @@ HINT
 
 5. Using hvPlot, create an interactive line plot that visualizes the cumulative return values of the ETF portfolio. Reflect the “time” column of the DataFrame on the x-axis. Make sure that you professionally style and format your visualization to enhance its readability.
 
-# Deploy the Notebook as a Web Application
+## Deploy the Notebook as a Web Application
 For this part of the assignment, complete the following steps:
 
     1. Use the Voilà library to deploy your notebook as a web application. You can deploy the web application locally on your computer.
@@ -106,7 +106,7 @@ For this part of the assignment, complete the following steps:
     2. Take a screen recording or screenshots to show how the web application appears when using Voilà. Include the recording or screenshots in the `README.md` file for your GitHub repository.
 
 # Requirements
-# Analyze a Single Asset in the ETF (20 points)
+## Analyze a Single Asset in the ETF (20 points)
 To receive all points, you must:
 
 * Write a `SQL SELECT` statement by using an f-string that reads all the PYPL data from the database. Using the SQL `SELECT` statement, execute a query that reads the PYPL data from the database into a Pandas DataFrame. (5 points)
@@ -117,7 +117,7 @@ To receive all points, you must:
 
 * Using hvPlot, create an interactive visualization for the PYPL cumulative returns. Reflect the “time” column of the DataFrame on the x-axis. Make sure that you professionally style and format your visualization to enhance its readability. (5 points)
 
-# Optimize Data Access with Advanced SQL Queries (20 points)
+## Optimize Data Access with Advanced SQL Queries (20 points)
 To receive all points, you must:
 
 * Access the closing prices for PYPL that are greater than 200:
@@ -140,7 +140,7 @@ To receive all points, you must:
 
     * Using the SQL statement, read the data from the database into a Pandas DataFrame, and then review the resulting DataFrame. (2 points)
 
-# Analyze the ETF Portfolio (20 points)
+## Analyze the ETF Portfolio (20 points)
 To receive all points, you must:
 
 * Write a SQL query to join each table in the portfolio into a single DataFrame.
@@ -161,14 +161,14 @@ To receive all points, you must:
 
 * Using hvPlot, create an interactive line plot that visualizes the cumulative return values of the ETF portfolio. Reflect the “time” column of the DataFrame on the x-axis. Make sure that you professionally style and format your visualization to enhance its readability. (4 points)
 
-# Deploy the Notebook as a Web Application (10 points)
+## Deploy the Notebook as a Web Application (10 points)
 To receive all points, you must:
 
 * Use the Voilà library to deploy your notebook as a web application. Deploy the web application locally on your computer. (5 points)
 
 * Take a screen recording or screenshots to show how the web application appears when using Voilà. Include the recording or screenshots in the `README.md` file for your GitHub repository. (5 points)
 
-# Coding Conventions and Formatting (10 points)
+## Coding Conventions and Formatting (10 points)
 To receive all points, you must:
 
 * Place imports at the top of the file, just after any module comments and docstrings and before module globals and constants. (3 points)
@@ -179,7 +179,7 @@ To receive all points, you must:
 
 * Use concise logic and creative engineering where possible. (2 points)
 
-# Deployment and Submission (10 points)
+## Deployment and Submission (10 points)
 To receive all points, you must:
 
 * Submit a link to a GitHub repository that’s cloned to your local computer and that contains your files. (4 points)
@@ -188,13 +188,13 @@ To receive all points, you must:
 
 * Include appropriate commit messages for your files. (3 points)
 
-# Comments (10 points)
+## Comments (10 points)
 To receive all points, your code must:
 
 * Be well commented with concise, relevant notes that other developers can understand. (10 points)
 
-# Submission
-To submit your Challenge assignment, click Submit, and then provide the URL of your GitHub repository for grading.
+## Submission
+To submit your Challenge assignment, click `Submit`, and then provide the URL of your GitHub repository for grading.
 
 NOTE
 You are allowed to miss up to two Challenge assignments and still earn your certificate. If you complete all Challenge assignments, your lowest two grades will be dropped. If you wish to skip this assignment, click Next, and move on to the next module.
