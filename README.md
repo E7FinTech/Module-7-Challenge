@@ -2,7 +2,7 @@
 
 ![alt text](7-4-challenge-image.png)
 
-## Background
+# Background
 
 Fraud is prevalent these days, whether you are a small taco shop or a large international business. While there are emerging technologies that employ machine learning and artificial intelligence to detect fraud, many instances of fraud detection still require strong data analytics to find abnormal charges.
 
@@ -30,7 +30,7 @@ Create an entity relationship diagram (ERD) by inspecting the provided CSV files
 
 * For the `transaction` table, the `date` column should be a TIMESTAMP datatype rather than DATE.
 
-## Data Engineering
+# Data Engineering
 
 Using your database model as a blueprint, create a database schema for each of your tables and relationships. Remember to specify data types, primary keys, foreign keys, and any other constraints you defined. After creating the database schema, import the data from the corresponding CSV files.
 
