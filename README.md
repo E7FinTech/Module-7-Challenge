@@ -3,170 +3,153 @@
 ![alt text](7-4-challenge-image.png)
 
 ## Background
-In recent years, finance has had an explosion in passive investing. **Passive investing** means that you invest in a group of assets called an exchange-traded fund (ETF). This way, you don’t spend time researching individual stocks or companies, or take the risk of investing in a single stock. ETFs offer more diversification.
 
-In this Challenge assignment, you’ll build a financial database and web application by using SQL, Python, and the Voilà library to analyze the performance of a hypothetical fintech ETF.
+Fraud is prevalent these days, whether you are a small taco shop or a large international business. While there are emerging technologies that employ machine learning and artificial intelligence to detect fraud, many instances of fraud detection still require strong data analytics to find abnormal charges.
 
-## What You're Creating
-For this Challenge assignment, you need to create and submit the following deliverables:
+In this homework assignment, you will apply your new SQL skills to analyze historical credit card transactions and consumption patterns in order to identify possible fraudulent transactions.
 
-* A Jupyter notebook that contains the following:
+You are asked to accomplish three main tasks:
 
-    * Your analysis of the ETF data that a SQL database stores
+ 1. Data Modeling: Define a database model to store the credit card transactions data and create a new PostgreSQL database using your model.
 
-    * Professionally styled and formatted interactive visualizations
+ 2. Data Engineering: Create a database schema on PostgreSQL and populate your database from the CSV files provided.
 
-* A screenshot or video of the web application that you created by deploying your Jupyter notebook via the Voilà library
-
-Upload the Jupyter notebook for this assignment to your GitHub repository. Make sure to update the `READ.md` file to include an explanation of your project, the screenshot or video of your deployed application, and any other information that’s needed to interact with your notebook and web application.
+ 3. Data Analysis: Analyze the data to identify possible fraudulent transactions trends data, and develop a report of your observations.
 
 ## Files
 Download the following files to help you get started:
-* [Module 7 Challenge File](Starter_Code/Starter_Files/visual_data_analysis.ipynb)
+* [Module 7 Challenge File](Starter_Code/Starter_Files/challenge.ipynb)
 
-# Instructions
-Use the `etf_analyzer.ipynb notebook` to complete your analysis of a fintech ETF that consists of four stocks: GOST, GS, PYPL, and SQ. Each stock has its own table in the `etf.db` database, which the `Starter_Code` folder contains.
+## Instructions
+# Data Modeling
 
-Analyze the daily returns of the ETF stocks both individually and as a whole. Then deploy the visualizations to a web application by using the Voilà library.
+Create an entity relationship diagram (ERD) by inspecting the provided CSV files. Part of the challenge here is to figure out how many tables you should create, as well as what kind of relationships you need to define among the tables. Feel free to discuss your database model design ideas with your classmates. You can use a tool like Quick Database Diagrams (Links to an external site.) to create your model.
 
-The detailed instructions are divided into the following parts:
+    # Hints:
+* For the `credit_card` and `transaction` tables, the `card` column should be a VARCHAR (20) datatype rather than an INT.
 
-* Analyze a single asset in the ETF
+* For the `transaction` table, the `date` column should be a TIMESTAMP datatype rather than DATE.
 
-* Optimize data access with advanced SQL queries
+## Data Engineering
 
-* Analyze the ETF portfolio
+Using your database model as a blueprint, create a database schema for each of your tables and relationships. Remember to specify data types, primary keys, foreign keys, and any other constraints you defined. After creating the database schema, import the data from the corresponding CSV files.
 
-* Deploy the notebook as a web application
+## Data Analysis
+# Part 1
 
-## Analyze a Single Asset in the ETF
-For this part of the assignment, you’ll use SQL queries with Python, Pandas, and hvPlot to analyze the performance of a single asset from the ETF.
+The CFO of your firm has requested a report to help analyze potential fraudulent transactions. Using your newly created database, generate queries that will discover the information needed to answer the following questions, then use your repository's ReadME file to create a markdown report you can share with the CFO:
 
-Complete the following steps:
+* Some fraudsters hack a credit card by making several small transactions (generally less than $2.00), which are typically ignored by cardholders.
 
-1. Write a SQL `SELECT` statement by using an f-string that reads all the PYPL data from the database. Using the SQL `SELECT` statement, execute a query that reads the PYPL data from the database into a Pandas DataFrame.
+    * How can you isolate (or group) the transactions of each cardholder?
 
-2. Use the `head` and `tail` functions to review the first five and the last five rows of the DataFrame. Make a note of the beginning and end dates that are available from this dataset. You’ll use this information to complete your analysis.
+    * Count the transactions that are less than $2.00 per cardholder.
 
-3. Using hvPlot, create an interactive visualization for the PYPL daily returns. Reflect the “time” column of the DataFrame on the x-axis. Make sure that you professionally style and format your visualization to enhance its readability.
+    * Is there any evidence to suggest that a credit card has been hacked? Explain your rationale.
 
-4. Using hvPlot, create an interactive visualization for the PYPL cumulative returns. Reflect the “time” column of the DataFrame on the x-axis. Make sure that you professionally style and format your visualization to enhance its readability.
+* Take your investigation a step further by considering the time period in which potentially fraudulent transactions are made.
 
-## Optimize Data Access with Advanced SQL Queries
-For this part of the assignment, you’ll continue to analyze a single asset (PYPL) from the ETF. You’ll use advanced SQL queries to optimize the efficiency of accessing data from the database.
+    * What are the top 100 highest transactions made between 7:00 am and 9:00 am?
 
-Complete the following steps:
+    * Do you see any anomalous transactions that could be fraudulent?
 
-1. Access the closing prices for PYPL that are greater than 200 by completing the following steps:
+    * Is there a higher number of fraudulent transactions made during this time frame versus the rest of the day?
 
-    * Write a SQL `SELECT` statement to select the dates where the PYPL closing price was higher than 200.0.
+    * If you answered yes to the previous question, explain why you think there might be fraudulent transactions during this time frame.
 
-    * Using the SQL statement, read the data from the database into a Pandas DataFrame, and then review the resulting DataFrame.
+* What are the top 5 merchants prone to being hacked using small transactions?
 
-    * Select the “time” and “close” columns for those dates where the closing price was higher than 200.0.
+* Create a view for each of your queries.
 
-2. Find the top 10 daily returns for PYPL by completing the following steps:
+# Part 2
 
-    * Write a SQL statement to find the top 10 PYPL daily returns. Make sure to do the following:
+Your CFO has also requested detailed trends data on specific card holders. Use the starter notebook to query your database and generate visualizations that supply the requested information as follows, then add your visualizations and observations to your markdown report:
 
-        * Use `SELECT` to select only the “time” and “daily_returns” columns.
+* The two most important customers of the firm may have been hacked. Verify if there are any fraudulent transactions in their history. For privacy reasons, you only know that their cardholder IDs are 2 and 18.
 
-        * Use `ORDER` to sort the results in descending order by the “daily_returns” column.
+    * Using hvPlot, create a line plot representing the time series of transactions over the course of the year for each cardholder separately.
 
-        * Use `LIMIT` to limit the results to the top 10 daily return values.
+    * Next, to better compare their patterns, create a single line plot that contains both card holders' trend data.
 
-    * Using the SQL statement, read the data from the database into a Pandas DataFrame, and then review the resulting DataFrame.
+    * What difference do you observe between the consumption patterns? Does the difference suggest a fraudulent transaction? Explain your rationale.
 
-## Analyze the ETF Portfolio
-For this part of the assignment, you’ll build the entire ETF portfolio and then evaluate its performance. To do so, you’ll build the ETF portfolio by using SQL joins to combine all the data for each asset.
+* The CEO of the biggest customer of the firm suspects that someone has used her corporate credit card without authorization in the first quarter of 2018 to pay quite expensive restaurant bills. Again, for privacy reasons, you know only that the cardholder ID in question is 25.
 
-Complete the following steps:
+    * Using hvPlot, create a box plot, representing the expenditure data from January 2018 to June 2018 for cardholder ID 25.
 
-1. Write a SQL query to join each table in the portfolio into a single DataFrame. To do so, complete the following steps:
+    * Are there any outliers for cardholder ID 25? How many outliers are there per month?
 
-    * Use a SQL inner join to join each table on the “time” column. Access the “time” column in the `GDOT` table via the `GDOT.time` syntax. Access the “time” columns from the other tables via similar syntax.
+    * Do you notice any anomalies? Describe your observations and conclusions.
 
-    * Using the SQL query, read the data from the database into a Pandas DataFrame. Review the resulting DataFrame.
+## Challenge
 
-2. Create a DataFrame that averages the “daily_returns” columns for all four assets. Review the resulting DataFrame.
+Another approach to identifying fraudulent transactions is to look for outliers in the data. Standard deviation or quartiles are often used to detect outliers.
 
-HINT
-3. Use the average daily returns in the etf_portfolio_returns DataFrame to calculate the annualized returns for the portfolio. Display the annualized return value of the ETF portfolio.
+Use the challenge starter notebook to code two Python functions:
 
-HINT
-4. Use the average daily returns in the `etf_portfolio_returns` DataFrame to calculate the cumulative returns of the ETF portfolio.
+    * One that uses standard deviation to identify anomalies for any cardholder.
 
-5. Using hvPlot, create an interactive line plot that visualizes the cumulative return values of the ETF portfolio. Reflect the “time” column of the DataFrame on the x-axis. Make sure that you professionally style and format your visualization to enhance its readability.
+    * Another that uses interquartile range to identify anomalies for any cardholder.
 
-## Deploy the Notebook as a Web Application
-For this part of the assignment, complete the following steps:
+For help with outliers detection, read the following articles:
 
-    1. Use the Voilà library to deploy your notebook as a web application. You can deploy the web application locally on your computer.
+    * How to Calculate Outliers (https://www.wikihow.com/Calculate-Outliers)
 
-    2. Take a screen recording or screenshots to show how the web application appears when using Voilà. Include the recording or screenshots in the `README.md` file for your GitHub repository.
+    * Removing Outliers Using Standard Deviation in Python (https://www.kdnuggets.com/2017/02/removing-outliers-standard-deviation-python.html)
+
+    * How to Use Statistics to Identify Outliers in Data (https://machinelearningmastery.com/how-to-use-statistics-to-identify-outliers-in-data/)
+
+## Submission
+Post a link to your GitHub repository in BootCamp Spot. The following should be included your repo:
+
+* An image file of your ERD.
+
+* The .sql file of your table schemata.
+
+* The .sql file of your queries.
+
+* The Jupyter Notebook containing your visual data analysis.
+
+* A ReadME file containing your markdown report.
+
+* **Optional: The Jupyter Notebook containing the optional challenge assignment.**
 
 # Requirements
-## Analyze a Single Asset in the ETF (20 points)
+## Data Modeling (20 points)
+## To receive all points, you must:
+
+* Define a database model. (10 points)
+
+* Use the defined model to create a PostgreSQL database. (10 points)
+
+# Data Engineering (20 points)
+## To receive all points, your code must:
+
+* Create a database schema for each table and relationship. (5 points)
+
+* Specify the data types. (5 points)
+
+* Define primary keys. (5 points)
+
+* Define foreign keys. (5 points)
+  
+# Data Analysis (30 points)
+## To receive all points, your code must:
 To receive all points, you must:
 
-* Write a `SQL SELECT` statement by using an f-string that reads all the PYPL data from the database. Using the SQL `SELECT` statement, execute a query that reads the PYPL data from the database into a Pandas DataFrame. (5 points)
+* Identify fraudulent transactions. (10 points)
 
-* Use the `head` and `tail` functions to review the first five and the last five rows of the DataFrame. Make a note of the beginning and end dates that are available from this dataset. Use this information to complete your analysis. (5 points)
+* Utilize SQL and Pandas DataFrames for a report within Jupyter Notebook. (10 points)
 
-* Using hvPlot, create an interactive visualization for the PYPL daily returns. Reflect the “time” column of the DataFrame on the x-axis. Make sure that you professionally style and format your visualization to enhance its readability. (5 points)
+* Provide a visual data analysis of fraudulent transactions using Pandas, hvPlot, and SQLAlchemy to create the visualizations. (10 points)
+  
+# Data Analysis (30 points)
+## To receive all points, your code must:
+* Identify fraudulent transactions. (10 points)
 
-* Using hvPlot, create an interactive visualization for the PYPL cumulative returns. Reflect the “time” column of the DataFrame on the x-axis. Make sure that you professionally style and format your visualization to enhance its readability. (5 points)
+* Utilize SQL and Pandas DataFrames for a report within Jupyter Notebook. (10 points)
 
-## Optimize Data Access with Advanced SQL Queries (20 points)
-To receive all points, you must:
-
-* Access the closing prices for PYPL that are greater than 200:
-
-    * Write a SQL `SELECT` statement to select the dates where the PYPL closing price was higher than 200.0. (4 points)
-
-    * Using the SQL statement, read the data from the database into a Pandas DataFrame, and then review the resulting DataFrame. (3 points)
-
-    * Select the “time” and “close” columns for those dates where the closing price was higher than 200.0. (3 points)
-
-* Find the top 10 daily returns for PYPL:
-
-    * Write a SQL statement to find the top 10 PYPL daily returns. (2 points)
-
-        * Use `SELECT` to select only the “time” and “daily_returns” columns. (2 points)
-
-        * Use `ORDER` to sort the results in descending order by the “daily_returns” column. (2 points)
-
-        * Use `LIMIT` to limit the results to the top 10 daily return values. (2 points)
-
-    * Using the SQL statement, read the data from the database into a Pandas DataFrame, and then review the resulting DataFrame. (2 points)
-
-## Analyze the ETF Portfolio (20 points)
-To receive all points, you must:
-
-* Write a SQL query to join each table in the portfolio into a single DataFrame.
-
-    * Use a SQL inner join to join each table on the “time” column. Access the “time” column in the `GDOT` table via the `GDOT.time` syntax. Access the “time” columns from the other tables via similar syntax. (3 points)
-
-    * Using the SQL query, read the data from the database into a Pandas DataFrame. Review the resulting DataFrame. (3 points)
-
-* Create a DataFrame that combines the “daily_returns” columns for all four assets. Review the resulting DataFrame. (3 points)
-
-* Use the portfolio returns in the `etf_portfolio_returns` DataFrame to calculate the annualized returns for the portfolio. Display the annualized return value of the ETF portfolio.
-
-    * To calculate the annualized returns, take the mean of the `etf_portfolio_returns` and multiply by 252. (2 points)
-
-    * To convert the decimal to a percentage, multiply the results by 100. (2 points)
-
-* Use the portfolio returns in the `etf_portfolio_returns` DataFrame to calculate the cumulative returns of the ETF portfolio. (3 points)
-
-* Using hvPlot, create an interactive line plot that visualizes the cumulative return values of the ETF portfolio. Reflect the “time” column of the DataFrame on the x-axis. Make sure that you professionally style and format your visualization to enhance its readability. (4 points)
-
-## Deploy the Notebook as a Web Application (10 points)
-To receive all points, you must:
-
-* Use the Voilà library to deploy your notebook as a web application. Deploy the web application locally on your computer. (5 points)
-
-* Take a screen recording or screenshots to show how the web application appears when using Voilà. Include the recording or screenshots in the `README.md` file for your GitHub repository. (5 points)
+* Provide a visual data analysis of fraudulent transactions using Pandas, hvPlot, and SQLAlchemy to create the visualizations. (10 points)
 
 ## Coding Conventions and Formatting (10 points)
 To receive all points, you must:
@@ -182,13 +165,11 @@ To receive all points, you must:
 ## Deployment and Submission (10 points)
 To receive all points, you must:
 
-* Submit a link to a GitHub repository that’s cloned to your local computer and that contains your files. (4 points)
+* Submit a link to a GitHub repository that’s cloned to your local machine and contains your files. (5 points)
 
-* Use the command line to add your files to the repository. (3 points)
+* Include appropriate commit messages in your files. (5 points)
 
-* Include appropriate commit messages for your files. (3 points)
-
-## Comments (10 points)
+## Code Comments (10 points)
 To receive all points, your code must:
 
 * Be well commented with concise, relevant notes that other developers can understand. (10 points)
