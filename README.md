@@ -34,7 +34,7 @@ Create an entity relationship diagram (ERD) by inspecting the provided CSV files
 
 Using your database model as a blueprint, create a database schema for each of your tables and relationships. Remember to specify data types, primary keys, foreign keys, and any other constraints you defined. After creating the database schema, import the data from the corresponding CSV files.
 
-## Data Analysis
+# Data Analysis
 # Part 1
 
 The CFO of your firm has requested a report to help analyze potential fraudulent transactions. Using your newly created database, generate queries that will discover the information needed to answer the following questions, then use your repository's ReadME file to create a markdown report you can share with the CFO:
@@ -81,7 +81,7 @@ Your CFO has also requested detailed trends data on specific card holders. Use t
 
     * Do you notice any anomalies? Describe your observations and conclusions.
 
-## Challenge
+# Challenge
 
 Another approach to identifying fraudulent transactions is to look for outliers in the data. Standard deviation or quartiles are often used to detect outliers.
 
@@ -99,7 +99,7 @@ For help with outliers detection, read the following articles:
 
     * How to Use Statistics to Identify Outliers in Data (https://machinelearningmastery.com/how-to-use-statistics-to-identify-outliers-in-data/)
 
-## Submission
+# Submission
 Post a link to your GitHub repository in BootCamp Spot. The following should be included your repo:
 
 * An image file of your ERD.
